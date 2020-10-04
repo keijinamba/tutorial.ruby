@@ -1,4 +1,5 @@
 # Class - Ruby Tutorial
+Ref: http://at-grandpa.hatenablog.jp/entry/2016/02/14/090544
 
 ## 目次
 - [Class](#Class)
