@@ -6,8 +6,7 @@ Ref: http://at-grandpa.hatenablog.jp/entry/2016/02/14/090544
 - [クラスメソッドとは](#クラスメソッドとは)
 - [クラスメソッドはクラスの特異メソッド](#クラスメソッドはクラスの特異メソッド)
 - [インスタンスメソッド](#インスタンスメソッド)
-- [モジュール[include]](#モジュール[include])
-- [モジュール[prepend]](#モジュール[prepend])
+- [モジュール](#モジュール)
 - [特異メソッドは特異クラスに属する](#特異メソッドは特異クラスに属する)
 - [クラスメソッドはクラスの特異クラスに属していた](#クラスメソッドはクラスの特異クラスに属していた)
 
@@ -128,7 +127,8 @@ obj.missing_method  # => NoMethodError
 <img width="600" src="./img_instance_method.png">
 
 
-## モジュール[include]
+## モジュール
+### include
 - includeしたモジュールは、includeしたクラスのすぐ一つ上に挿入される
 - superclassの探索の前にモジュールが探索される
 
@@ -151,7 +151,7 @@ obj.m_method # モジュールのメソッドを呼び出す
 ```
 <img width="600" src="./img_module_include.png">
 
-## モジュール[prepend]
+### prepend
 - prependしたモジュールは、prependしたクラスのすぐ一つ下に挿入される
 
 ```ruby
