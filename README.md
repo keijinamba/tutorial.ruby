@@ -1,5 +1,5 @@
 # Ruby Tutorial
 
 ## 目次
-- [Base](./Base)
+- [基礎](./base)
 - [Class](./Class)
