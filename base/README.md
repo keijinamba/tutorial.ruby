@@ -5,6 +5,7 @@
 - [返り値](#返り値)
 - [制御構造](#制御構造)
 - [演算子](#演算子)
+- [拡張](#拡張)
 - [メソッド呼び出し](#メソッド呼び出し)
 
 
@@ -12,7 +13,7 @@
 Rubyでは、関数やクラス、モジュールなどが全てオブジェクトとして存在する。
 
 ## 返り値
-<a href="./2_return.rb">実行ファイル</a>  
+<a href="./return.rb">実行ファイル</a>  
 
 Rubyは`return`や`break`がなくても、常に最後に評価した式の値が返り値として返却される。
 
@@ -44,7 +45,7 @@ puts capitalize_add("", "post") # => "Error"
 ```
 
 ## 制御構造
-<a href="./3_control_expression.rb">実行ファイル</a>  
+<a href="./control_expression.rb">実行ファイル</a>  
 
 ### 制御構造の返り値
 Rubyでは制御構造自体も返り値を持つ。  
@@ -129,7 +130,7 @@ end
 ```
 
 ## 演算子
-<a href="./4_operator.rb">実行ファイル</a>  
+<a href="./operator.rb">実行ファイル</a>  
 
 他の言語では組み込みの演算子なものがRubyではメソッドとして存在しているものが多い。
 
@@ -151,8 +152,44 @@ end
 puts "string" - "ing" # => "str"
 ```
 
+## 拡張
+<a href="./extension.rb">実行ファイル</a>  
+
+定義済みのクラスを、再度同じように定義することで拡張となる。
+```ruby
+class C
+  def say_hi
+    puts "hi"
+  end
+end
+
+# Cはすでに定義済みなので拡張される
+class C
+  def say_hello
+    puts "hello"
+  end
+end
+
+c = C.new
+c.say_hi  # => hi
+c.say_hello  # => hello
+```
+
+組み込みのStringクラスArrayクラスなども拡張できる
+-> 取り扱いに注意が必要
+
+```ruby
+class String
+  def -(other)
+    self.delete(other) # otherで指定された文字列を削除する
+  end
+end
+
+puts "string" - "ing" # => "str"
+```
+
 ## メソッド呼び出し
-<a href="./5_method.rb">実行ファイル</a>  
+<a href="./method.rb">実行ファイル</a>  
 
 ### ブロック付き呼び出し
 
@@ -262,4 +299,35 @@ puts square.call(5)  # => 25
 
 cube = -> (num) { num ** 3 }  # lambda式の書き方2
 puts cube.call(5)  # => 125
+```
+
+## 名前空間
+<a href="./namespace.rb">実行ファイル</a>  
+
+RubyではClassやModuleは名前空間としてスコープ管理にも使える。
+
+```ruby
+class Fire
+  def mean
+    puts self
+    puts "火"
+  end
+end
+
+module Company
+  class Fire
+    def mean
+      puts self
+      puts "解雇"
+    end
+  end
+end
+
+Fire.new.mean
+# => #<Fire:0x00007febf99206c0>
+# => 火
+
+Company::Fire.new.mean
+# => #<Company::Fire:0x00007febf9920530>
+# => 解雇
 ```
